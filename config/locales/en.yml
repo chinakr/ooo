@@ -20,4 +20,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  back: 'Back'
+  users:
+    new:
+      new_user: 'New user'
+  sessions:
+    create:
+      mismatch_login: 'Invalid username or password.'
+    new: 
+      user_login: 'User login'
+      login: 'Login'
+    destroy:
+      already_logout: 'User logout successfully.'

@@ -1,0 +1,21 @@
+en:
+  back: 'Back'
+  activerecord:
+    models:
+      user: '用户'
+    attributes:
+      username: '用户名'
+      password: '密码'
+      password_confirmation: '重复输入密码'
+      name: '姓名'
+      email: 'E-mail'
+      mobile: '手机号'
+      note: '备注'
+  users:
+    new:
+      new_user: 'New user'
+  sessions:
+    create:
+      mismatch_login: 'Invalid username or password.'
+    new: 
+      user_login: 'User login'
