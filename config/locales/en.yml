@@ -21,6 +21,7 @@
 
 en:
   back: 'Back'
+  logout: 'Logout'
   users:
     new:
       new_user: 'New user'
