@@ -6,9 +6,7 @@
       <th>Code name</th>
       <th>Name</th>
       <th>Note</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th><%= t('labels.manage') %></th>
     </tr>
   </thead>
 
@@ -18,9 +16,12 @@
         <td><%= group.code_name %></td>
         <td><%= group.name %></td>
         <td><%= group.note %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to t('groups.manage_user'), add_user_group_path(group) %>
+          <%= link_to 'Show', group %>
+          <%= link_to 'Edit', edit_group_path(group) %>
+          <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>

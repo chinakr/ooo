@@ -65,6 +65,12 @@ Ooo::Application.routes.draw do
       post 'add_to_group'
     end
   end
+  resources :groups do
+    member do
+      get 'add_user'
+      post 'add_user'
+    end
+  end
   
   controller :sessions do
     get 'login' => :new

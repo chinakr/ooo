@@ -1,0 +1,17 @@
+<h1><%= @group.name %> - <%= t('groups.manage_user') %></h1>
+<p><%= t('labels.total') %>: <%= @group.users.count %>/<%= User.count %></p>
+<table>
+  <% @users.each do |u| %>
+    <tr>
+      <td><%= u.username %> (<%= u.name %>)</td>
+      <td>
+        <% if @group.users.include?(u) %>
+          <%= button_to t('groups.remove_user'), add_user_group_path(@group, { user_id: u.id, func: 'remove' }) %>
+        <% else %>
+          <%= button_to t('groups.add_user'), add_user_group_path(@group, { user_id: u.id, func: 'add' }) %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<p><%= link_to t('labels.back'), groups_path %></p>

@@ -85,7 +85,7 @@ class UsersController < ApplicationController
       @group = Group.find(params[:group_id])
       if params[:func] == 'add'
         @user.groups << @group
-      else
+      elsif params[:func] == 'remove'
         @user.groups.delete(@group)
       end
       redirect_to :back

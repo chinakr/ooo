@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :destroy, :add_user]
 
   # GET /groups
   # GET /groups.json
@@ -58,6 +58,19 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to groups_url }
       format.json { head :no_content }
+    end
+  end
+
+  def add_user
+    @users = User.order('username')
+    if request.method == 'POST'
+      @user = User.find(params[:user_id])
+      if params[:func] == 'add'
+        @group.users << @user
+      elsif params[:func] == 'remove'
+        @group.users.delete(@user)
+      end
+      redirect_to :back
     end
   end
 

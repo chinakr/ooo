@@ -22,9 +22,10 @@
 en:
   labels:
     back: 'Back'
-    logout: 'Logout'
-    total: 'Total'
     filter: 'Filter'
+    logout: 'Logout'
+    manage: 'Manage'
+    total: 'Total'
   users:
     manage_group: 'Manage group'
     add_to_group: 'Add to group'
@@ -34,6 +35,10 @@ en:
     inactive_groups: 'Inactive groups'
     new:
       new_user: 'New user'
+  groups:
+    manage_user: 'Manage user'
+    add_user: 'Add user'
+    remove_user: 'Remove user'
   sessions:
     create:
       mismatch_login: 'Invalid username or password.'
