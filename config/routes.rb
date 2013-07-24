@@ -1,4 +1,6 @@
 Ooo::Application.routes.draw do
+  post "api/login"
+  post "api/member"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
