@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   attr_accessor :password_confirmation
   validate :password_must_be_present
   
+  has_and_belongs_to_many :groups
+
   def User.encrypt_password(password, salt)
     Digest::SHA2.hexdigest(password + '123abc' + salt)
   end

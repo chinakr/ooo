@@ -1,0 +1,24 @@
+<h1><%= @user.username %>(<%= @user.name %>) - <%= t('users.manage_group') %></h1>
+<p><%= t('labels.total') %>: <%= @user.groups.count %>/<%= Group.count %></p>
+<div class="filter">
+  <input type="hidden" name="filter" value="<%= @filter %>" />
+  <%= t('labels.filter') %>:
+  <%= link_to t('users.all_groups'), add_to_group_user_path, class: 'all' %>
+  <%= link_to t('users.active_groups'), add_to_group_user_path(filter: 'active'), class: 'active' %>
+  <%= link_to t('users.inactive_groups'), add_to_group_user_path(filter: 'inactive'), class: 'inactive' %>
+</div>
+<table>
+  <% @groups.each do |g| %>
+    <tr>
+      <td><%= g.name %></td>
+      <td>
+        <% if @user.groups.include?(g) %>
+          <%= button_to t('users.remove_from_group'), { group_id: g.id, func: 'remove' }, remote: false %>
+        <% else %>
+          <%= button_to t('users.add_to_group'), { group_id: g.id, func: 'add' }, remote: false %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<p><%= link_to t('labels.back'), users_path %>

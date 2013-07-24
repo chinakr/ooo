@@ -11,9 +11,7 @@
       <th>Mobile</th>
       <th>Is staff</th>
       <th>Note</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Manage</th>
     </tr>
   </thead>
 
@@ -21,16 +19,19 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.username %></td>
-        <td><%= user.hashed_password %></td>
-        <td><%= user.salt %></td>
+        <td><%= user.hashed_password[0..10] %>...</td>
+        <td><%= user.salt[0..10] %>...</td>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= user.mobile %></td>
         <td><%= user.is_staff %></td>
         <td><%= user.note %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to t('.manage_group'), add_to_group_user_path(user) %>
+          <%= link_to 'Show', user %>
+          <%= link_to 'Edit', edit_user_path(user) %>
+          <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -1,5 +1,4 @@
 Ooo::Application.routes.draw do
-  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -54,6 +53,19 @@ Ooo::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  resources :users
+  resources :groups
+  resources :users, shallow: true do
+    resources :groups
+  end
+  resources :users do
+    #get 'add-to-group', to: :add_to_group, as: 'add_user_to_group'
+    member do
+      get 'add_to_group'
+      post 'add_to_group'
+    end
+  end
+  
   controller :sessions do
     get 'login' => :new
     post 'login' => :create

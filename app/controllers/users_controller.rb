@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :add_to_group]
 
   # GET /users
   # GET /users.json
@@ -60,6 +60,35 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
+    end
+  end
+
+  # GET /users/1/add-to-group
+  # POST /users/1/add-to-group/1
+  def add_to_group
+    @groups = Group.order('name')
+    @filter = 'all'
+    if request.method == 'GET'
+      if params[:filter] == 'active'
+        @groups = @user.groups.order('name')
+        @filter = 'active'
+      elsif params[:filter] == 'inactive'
+        groups = []
+        @groups.each do |g|
+          groups << g unless @user.groups.include?(g)
+        end
+        @groups = groups
+        @filter = 'inactive'
+      end
+    end
+    if request.method == 'POST'
+      @group = Group.find(params[:group_id])
+      if params[:func] == 'add'
+        @user.groups << @group
+      else
+        @user.groups.delete(@group)
+      end
+      redirect_to :back
     end
   end
 

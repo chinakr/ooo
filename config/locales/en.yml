@@ -20,9 +20,18 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  back: 'Back'
-  logout: 'Logout'
+  labels:
+    back: 'Back'
+    logout: 'Logout'
+    total: 'Total'
+    filter: 'Filter'
   users:
+    manage_group: 'Manage group'
+    add_to_group: 'Add to group'
+    remove_from_group: 'Remove from group'
+    all_groups: 'All groups'
+    active_groups: 'Active groups'
+    inactive_groups: 'Inactive groups'
     new:
       new_user: 'New user'
   sessions:
