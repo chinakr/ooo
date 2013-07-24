@@ -27,7 +27,7 @@
         <td><%= user.is_staff %></td>
         <td><%= user.note %></td>
         <td>
-          <%= link_to t('.manage_group'), add_to_group_user_path(user) %>
+          <%= link_to t('users.manage_group'), add_to_group_user_path(user) %>
           <%= link_to 'Show', user %>
           <%= link_to 'Edit', edit_user_path(user) %>
           <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>

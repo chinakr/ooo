@@ -10,7 +10,7 @@
   <div class="header">
     <% if session[:user_id] %>
       <span class="user"><%= User.find_by_id(session[:user_id]).username %></span>
-      <%= button_to t('logout'), logout_path, method: :delete %>
+      <%= button_to t('labels.logout'), logout_path, method: :delete %>
     <% end %>
   </div><!-- End .header -->
 <%= yield %>
