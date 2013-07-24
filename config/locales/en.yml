@@ -26,6 +26,8 @@ en:
     logout: 'Logout'
     manage: 'Manage'
     total: 'Total'
+  messages:
+    permission_denied: 'Permission denied'
   users:
     manage_group: 'Manage group'
     add_to_group: 'Add to group'
