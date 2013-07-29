@@ -35,6 +35,12 @@ namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
+
+  after 'deploy:update_code', 'deploy:assets_precompile'
+  desc 'Precompile assets to public/assets/'
+  task :assets_precompile, :roles => :app do
+    run "cd #{release_path}; RAILS_ENV=production bundle exec rake assets:precompile"
+  end
 end
 #namespace :deploy do
 #  desc 'Cause Passenger to initiate a restart.'
