@@ -1,4 +1,5 @@
 Ooo::Application.routes.draw do
+  root 'users#index'
   post "api/login"
   post "api/member"
   # The priority is based upon order of creation: first created -> highest priority.
