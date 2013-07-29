@@ -37,6 +37,8 @@ en:
     inactive_groups: 'Inactive groups'
     new:
       new_user: 'New user'
+    destroy:
+      cannot_delete_current_user: "Can't delete current user"
   groups:
     manage_user: 'Manage user'
     add_user: 'Add user'

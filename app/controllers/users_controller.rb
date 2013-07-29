@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_filter :authorize, only: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy, :add_to_group]
 
   # GET /users
@@ -15,6 +16,9 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    if User.count > 0 and session[:user_id] == nil
+      redirect_to login_url, alert: t('messages.permission_denied')
+    end
     @user = User.new
   end
 
@@ -26,9 +30,12 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
+        if User.count == 1    # the first user should be administrator
+          @admin = Group.find_by_code_name('admin')
+          @admin.users << @user
+        end
         format.html { redirect_to @user, notice: t('.user_created') }
         #format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
@@ -56,6 +63,9 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    if @user.id == session[:user_id]
+      redirect_to users_path, alert: t('.cannot_delete_current_user')
+    end
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url }
