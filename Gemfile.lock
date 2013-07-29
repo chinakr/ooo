@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/anjlab/bootstrap-rails.git
+  revision: 7556d2c17115e8d4e5f8ba17b19e6cb6fdece1a3
+  branch: 3.0.0
+  specs:
+    anjlab-bootstrap-rails (3.0.0.rc1)
+      railties (>= 3.0)
+      sass (>= 3.2)
+
 GEM
   remote: http://ruby.taobao.org/
   specs:
@@ -124,6 +133,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  anjlab-bootstrap-rails!
   capistrano
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)

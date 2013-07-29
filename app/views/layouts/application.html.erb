@@ -2,18 +2,23 @@
 <html>
 <head>
   <title>Ooo</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="header">
+  <div class="container">
     <% if session[:user_id] and User.find_by_id(session[:user_id]) %>
-      <span class="user"><%= User.find_by_id(session[:user_id]).username %></span>
-      <%= button_to t('labels.logout'), logout_path, method: :delete %>
+      <div class="header navbar">
+        <a class="navbar-brand" href="#">内部人员认证系统</a>
+        <ul class="nav navbar-nav pull-right">
+          <li><a href="#"><%= User.find_by_id(session[:user_id]).username %></a></li>
+          <li><%= button_to t('labels.logout'), logout_path, method: :delete, class: 'btn btn-default navbar-btn' %></li>
+        </ul>
+      </div><!-- End .header -->
     <% end %>
-  </div><!-- End .header -->
-<%= yield %>
-
+    <%= yield %>
+  </div><!-- End .container -->
 </body>
 </html>

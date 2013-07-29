@@ -1,21 +1,27 @@
-<div class="login-form">
+<form method="post" action="" class="form-horizontal">
+  <%= tag :input, type: 'hidden', name: request_forgery_protection_token.to_s, value: form_authenticity_token %>
+  <legend><%= t('.user-login') %></legend>
   <% if flash[:alert] %>
-    <p id="notice"><%= flash[:alert] %></p>
+    <div class="alert">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:alert] %>
+    </div><!-- End .alert -->
   <% end %>
-  <%= form_tag do %>
-    <fieldset>
-      <legend><%= t('.user-login') %></legend>
-      <div>
-        <label for="username"><%= t('.username') %></label>
-        <%= text_field_tag :username, params[:username] %>
-      </div>
-      <div>
-        <label for="password"><%= t('.password') %></label>
-        <%= password_field_tag :password, params[:password] %>
-      </div>
-      <div>
-        <%= submit_tag t('.login') %>
-      </div>
-    </fieldset>
-  <% end %>
-</div><!-- End .login-form -->
+  <div class="form-group">
+    <label for="username" class="col-lg-1 col-offset-3 control-label"><%= t('.username') %></label>
+    <div class="col-lg-4">
+      <%= text_field_tag :username, params[:username], class: 'form-control' %>
+    </div>
+  </div><!-- End .form-group -->
+  <div class="form-group">
+    <label for="password" class="col-lg-1 col-offset-3 control-label"><%= t('.password') %></label>
+    <div class="col-lg-4">
+      <%= password_field_tag :password, params[:password], class: 'form-control' %>
+    </div>
+  </div><!-- End .form-group -->
+  <div class="form-group">
+    <div class="col-lg-4 col-offset-4">
+      <%= submit_tag t('.login'), class: 'btn btn-default' %>
+    </div>
+  </div><!-- End .form-group -->
+</form>

@@ -46,3 +46,6 @@ gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Bootstrap 3 support
+gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails', branch: '3.0.0'
