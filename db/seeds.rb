@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+admin = Group.create({ code_name: 'admin', name: '管理员', note: '第一个创建的用户默认为管理员' })
