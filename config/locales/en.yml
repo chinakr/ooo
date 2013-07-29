@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  site_name: 'One of Us'
   labels:
     back: 'Back'
     filter: 'Filter'
